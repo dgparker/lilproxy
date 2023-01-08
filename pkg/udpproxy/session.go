@@ -33,14 +33,14 @@ func createSession(caddr *net.UDPAddr, raddr *net.UDPAddr, proxyConn *net.UDPCon
 
 func (s *Session) listen() error {
 	for {
-		buf := make([]byte, 1024)
-		_, err := s.serverConn.Read(buf)
+		buf := make([]byte, 2048)
+		n, err := s.serverConn.Read(buf)
 		if err != nil {
 			log.Println(err)
 			continue
 		}
 
-		go s.proxyFrom(buf)
+		s.proxyFrom(buf[:n])
 	}
 }
 

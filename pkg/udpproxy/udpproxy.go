@@ -47,7 +47,7 @@ func (c *Client) ListenAndServe() error {
 
 	for {
 		buf := make([]byte, 2048)
-		_, caddr, err := c.proxyConn.ReadFromUDP(buf)
+		n, caddr, err := c.proxyConn.ReadFromUDP(buf)
 		if err != nil {
 			log.Println(err)
 		}
@@ -63,7 +63,7 @@ func (c *Client) ListenAndServe() error {
 			c.sessions[caddr.String()] = session
 		}
 
-		go session.proxyTo(buf)
+		session.proxyTo(buf[:n])
 	}
 }
 

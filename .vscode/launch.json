@@ -11,7 +11,7 @@
             "mode": "auto",
             "program": "${workspaceFolder}/cmd/http/main.go",
             "env": {
-                "LILPROXY_TARGET": "localhost:9001",
+                "LILPROXY_TARGET": "127.0.0.1:2456",
                 "LILPROXY_PORT":":9000"
             }
         }
