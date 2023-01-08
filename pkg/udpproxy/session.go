@@ -48,6 +48,7 @@ func (s *Session) proxyFrom(buf []byte) error {
 	s.updateTime = time.Now()
 	_, err := s.proxyConn.WriteToUDP(buf, s.caddr)
 	if err != nil {
+		log.Println(err)
 		return err
 	}
 
