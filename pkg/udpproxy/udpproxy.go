@@ -63,7 +63,7 @@ func (c *Client) ListenAndServe() error {
 			c.sessions[caddr.String()] = session
 		}
 
-		session.proxyTo(buf[:n])
+		go session.proxyTo(buf[:n])
 	}
 }
 

@@ -23,7 +23,7 @@ func main() {
 		log.Fatal(err)
 	}
 
-	log.Printf("lilproxy initialized")
+	log.Printf("lilproxy initialized on port: (%s) target address: (%s)", port, target)
 
 	log.Fatal(c.ListenAndServe())
 }

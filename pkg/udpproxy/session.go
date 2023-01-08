@@ -40,7 +40,7 @@ func (s *Session) listen() error {
 			continue
 		}
 
-		s.proxyFrom(buf[:n])
+		go s.proxyFrom(buf[:n])
 	}
 }
 
